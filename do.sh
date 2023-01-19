@@ -1,10 +1,13 @@
 #!/bin/bash
 
-pushd Server
-gcc -o server server.c
-./server
-popd
+DEBUG=-g
 
-pushd Client
-gcc -o client client.c
-popd
+[ $# -eq 0 ] && DEBUG=
+
+cd Server
+g++ $DEBUG -o server *.cpp
+cd ..
+
+cd Client
+g++ $DEBUG -o client *.cpp
+cd ..
